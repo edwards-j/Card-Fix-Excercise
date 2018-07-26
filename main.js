@@ -47,7 +47,7 @@ const DragDropManager = Object.create(null, {
             origin.forEach(target => {
                 // Dragover not supported by default. Turn that off.
                 target.ondragover = e => e.preventDefault()
-
+                
                 target.ondrop = e => {
                     // Enabled dropping on targets
                     e.preventDefault()
@@ -55,8 +55,7 @@ const DragDropManager = Object.create(null, {
                     // Determine what's being dropped
                     const data = e.dataTransfer.getData("text")
 
-                    // Append card to target component as child, but only if there are no cards currently in there
-                    e.target.appendChild(document.querySelector(`.${data.split(" ")[1]}`))
+                    e.target.insertAdjacentElement('beforebegin' , document.querySelector(`.${data.split(" ")[1]}`))
                 }
 
             })
